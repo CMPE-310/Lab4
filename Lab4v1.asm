@@ -5,7 +5,7 @@ BITS 16
 CPU 8086
 
 ; Keyboard Display Controller Port Addresses (example)
-; ------------------------------------------	
+; -----------------------------------------------------	
 
 %define	KBD_CMD 0xFFF2		;keyboard command register
 %define KBD_DAT 0xFFF0		;keyboard data register
