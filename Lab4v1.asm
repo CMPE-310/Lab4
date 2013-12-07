@@ -127,8 +127,8 @@ section CONSTSEG USE16 ALIGN=16 CLASS=CONST
 
 	welcome: 	db " Welcome to CMPE 310" 	; 20 characters per line
 				db "     Fall 13        " 
-				db "   Trainer Board    "
-				db "    8086 Project    " 	
+				db "  Trainer Borad     "
+				db " 8086 - Project 4   " 	
 	len1: 		equ $ - welcome
 
 	change_project1: db " Project"				;8 characters, displayed starting at character 12 (offset+1)
