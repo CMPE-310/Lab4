@@ -1,0 +1,143 @@
+     1                                  ; Force 16-bit code and 8086 instruction set
+     2                                  ; ------------------------------------------
+     3                                  	
+     4                                  BITS 16
+     5                                  CPU 8086
+     6                                  
+     7                                  ; Keyboard Display Controller Port Addresses (example)
+     8                                  ; ------------------------------------------	
+     9                                  
+    10                                  %define	KBD_CMD 0xFFF2		;keyboard command register
+    11                                  %define KBD_DAT 0xFFF0		;keyboard data register
+    12                                  	
+    13                                  ; Interrupt Controller Port addresses (example)
+    14                                  ; -----------------------------------
+    15                                  	
+    16                                  %define INT_A0  0xFFF4 		;8259 A0=0
+    17                                  %define INT_A1  0XFFF6		;8259 A0=1
+    18                                  			
+    19                                  ; --------------------------------------------------------------------------------------------------------------------------
+    20                                  ; 															      			
+    21                                  ; ROM code section, align at 16 byte boundary, 16-bit code 								      	
+    22                                  ; Code segment: PROGRAM, relocate using loc86 AD option to 0xF0000 size is variable, burn at location 0x18000 in the Flash    
+    23                                  ; Use loc86 BS option to put a jump from 0xFFFF0 (reset location) to the code segment, burn at location 0x1FFF8 in the Flash  
+    24                                  ; 															      
+    25                                  ; --------------------------------------------------------------------------------------------------------------------------
+    26                                  ;;THIS IS YOUR CODE SEGMENT, don't change anything till the cli instruction
+    27                                  
+    28                                  section PROGRAM USE16 ALIGN=16 CLASS=CODE
+    29                                  	
+    30                                  ..start
+    31                                   	
+    32                                  	;cli				; Turn off interrupts
+    33                                  	;; When using interrupts use the following instruction (jmp $) to sit in a busy loop, turn on interrupts before that
+    34                                  	;; jmp $
+    35                                  	
+    36                                  KEYPAD_INIT:
+    37 00000000 B80000                  	mov ax, 0
+    38 00000003 BB[0000]                	mov bx, welcome 
+    39 00000006 B95000                  	mov cx, len1 
+    40 00000009 BA0000                  	mov dx, 0
+    41 0000000C 8CDE                    	mov si, ds
+    42 0000000E CD10                    	int 10H
+    43                                  
+    44                                  KEYPAD_CHANGE_1:	
+    45 00000010 B80400                  	mov ax, 4
+    46 00000013 BB[5000]                	mov bx, change_project1
+    47 00000016 B90800                  	mov cx, 8 
+    48 00000019 BA0800                  	mov dx, 8
+    49 0000001C 8CDE                    	mov si, ds 
+    50 0000001E CD10                    	int 10H
+    51                                  
+    52 00000020 B8FFFF                  mov ax, 65535
+    53 00000023 B90000                  mov cx, 0
+    54                                  
+    55                                  WAIT_LOOP_P1:	
+    56 00000026 41                      	inc cx
+    57 00000027 90                      	nop
+    58 00000028 90                      	nop
+    59 00000029 90                      	nop
+    60 0000002A 39C1                    	cmp	cx, ax	
+    61 0000002C 75F8                    	jne WAIT_LOOP_P1
+    62                                  	
+    63                                  
+    64 0000002E B8FFFF                  mov ax, 65535
+    65 00000031 B90000                  mov cx, 0
+    66                                  
+    67                                  WAIT_LOOP_P2:	
+    68 00000034 41                      	inc cx
+    69 00000035 90                      	nop
+    70 00000036 90                      	nop
+    71 00000037 90                      	nop
+    72 00000038 39C1                    	cmp	cx, ax	
+    73 0000003A 75F8                    	jne WAIT_LOOP_P2
+    74                                  		
+    75                                  KEYPAD_CHANGE_2:	
+    76 0000003C B80400                  	mov ax, 4
+    77 0000003F BB[5800]                	mov bx, change_project2
+    78 00000042 B90800                  	mov cx, 8 
+    79 00000045 BA0800                  	mov dx, 8
+    80 00000048 8CDE                    	mov si, ds 
+    81 0000004A CD10                    	int 10H
+    82                                  
+    83 0000004C B8FFFF                  	mov ax, 65535
+    84 0000004F B90000                  	mov cx, 0
+    85                                  
+    86                                  WAIT_LOOP2_P1:	
+    87 00000052 41                      	inc cx
+    88 00000053 90                      	nop
+    89 00000054 90                      	nop
+    90 00000055 90                      	nop
+    91 00000056 39C1                    	cmp	cx, ax	
+    92 00000058 75F8                    	jne WAIT_LOOP2_P1
+    93                                  
+    94 0000005A B8FFFF                  mov ax, 65535
+    95 0000005D B90000                  mov cx, 0
+    96                                  
+    97                                  WAIT_LOOP2_P2:	
+    98 00000060 41                      	inc cx
+    99 00000061 90                      	nop
+   100 00000062 90                      	nop
+   101 00000063 90                      	nop
+   102 00000064 39C1                    	cmp	cx, ax	
+   103 00000066 75F8                    	jne WAIT_LOOP2_P2
+   104                                  	
+   105 00000068 EBA6                    jmp KEYPAD_CHANGE_1
+   106                                  	
+   107                                  	
+   108                                     	; Setup up interrupt vector table
+   109                                     	; -------------------------------
+   110                                  	;;; EXAMPLE, take this code out when not using interrupts. This loads two interrupt vectors at vectors 0x09 and 0x0A 
+   111                                  	
+   112                                      ;mov bx, 8H * 4		;Interrupt vector table 0x08 base address
+   113                                      ;mov cx, INTR1		;INTR1 service routine
+   114                                      ;mov [es:bx+4], cx		;offset
+   115                                      ;mov [es:bx+6], cs		;current code segment
+   116                                      ;mov cx, INTR2		;INTR2 service routine
+   117                                      ;mov [es:bx+8], cx		;offset
+   118                                      ;mov [es:bx+10], cs		;segment
+   119                                  
+   120                                  ; --------------------------------------------------------------------------------------------------------------------------
+   121                                  ; 													      			
+   122                                  ; RAM data section, align at 16 byte boundry, 16-bit
+   123                                  ; --------------------------------------------------------------------------------------------------------------------------	
+   124                                  ;;; THIS IS YOUR DATA SEGMENT
+   125                                  
+   126                                  section CONSTSEG USE16 ALIGN=16 CLASS=CONST
+   127                                  
+   128 00000000 2057656C636F6D6520-     	welcome: 	db " Welcome to CMPE 310" 	; 20 characters per line
+   129 00000009 746F20434D50452033-
+   130 00000012 3130               
+   131 00000014 202020202046616C6C-     				db "     Fall 13        " 
+   132 0000001D 203133202020202020-
+   133 00000026 2020               
+   134 00000028 202020547261696E65-     				db "   Trainer Board    "
+   135 00000031 7220426F6172642020-
+   136 0000003A 2020               
+   137 0000003C 202020203830383620-     				db "    8086 Project    " 	
+   138 00000045 50726F6A6563742020-
+   139 0000004E 2020               
+   140                                  	len1: 		equ $ - welcome
+   141                                  
+   142 00000050 2050726F6A656374        	change_project1: db " Project"				;8 characters, displayed starting at character 12 (offset+1)
+   143 00000058 2069732066756E20        	change_project2: db " is fun "				;8 characters, displayed starting at character 12 (offset+1)
