@@ -1,3 +1,12 @@
+; Names: Jonathan Peevy, Natalie Morningstar, Bruce Oshokoya
+; Date: December 10, 2013
+; Course: CMPE-310
+; Assignment: Lab 4
+;
+; This version of the lab 4 program builds on the functionality of the v1 program, which was able to display a message to LCD.
+; Version 2 adds the functionality of programming the programmable IC's (only the 8279 in the case of the trainer board.
+
+
 ; Force 16-bit code and 8086 instruction set
 ; ------------------------------------------
 	
@@ -31,7 +40,10 @@ section PROGRAM USE16 ALIGN=16 CLASS=CODE
  	
 	;cli				; Turn off interrupts
 	
-	
+	mov al, 00001001b		; Program 8279 Keyboard/Display command byte. 000 prefix, 01 - 16 key system, 001 - decoded
+	out KBD_CMD, al
+	mov al, 00111001b		; Program 8279 Program CLK. 001 prefix, 11001 to divide clk by 25.
+	out KBD_CMD, al
 	
 	;; When using interrupts use the following instruction (jmp $) to sit in a busy loop, turn on interrupts before that
 	;; jmp $
