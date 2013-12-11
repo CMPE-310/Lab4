@@ -1,0 +1,76 @@
+(ExpressProject "8279_and_Keypad"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File
+         "C:\Users\Natalie Morningstar\Documents\CMPE_310_Cadence_Files\LIBRARY1.OLB"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\8279_and_keypad.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x"))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector
+    (7422
+      (FullPartName "7422.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\GATE.OLB")
+      (DeviceIndex "0"))
+    (16L8
+      (FullPartName "16L8.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\PLD.OLB")
+      (DeviceIndex "0"))
+    (RESISTOR
+      (FullPartName "RESISTOR.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (VCC
+      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    ("SW PUSHBUTTON-SPST"
+      (FullPartName "SW PUSHBUTTON-SPST.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (SW_TC_SPST
+      (FullPartName "SW_TC_SPST.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (8279
+      (FullPartName "8279.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MISC.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory
+     "C:\OrCAD\OrCAD_16.6_Lite\tools\capture\library")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\8279_and_keypad.dsn")
+      (Path "Design Resources"
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\8279_and_keypad.dsn"
+         "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Design Resources" "Library"
+         "C:\Users\Natalie Morningstar\Documents\CMPE_310_Cadence_Files\LIBRARY1.OLB"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -30 0 200 0 487"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 1 0 748 -8 -30 -75 949 0 524")
+        (Scroll "0 0")
+        (Zoom "106")
+        (Occurrence "/"))
+      (Path
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\8279_AND_KEYPAD.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1"))))

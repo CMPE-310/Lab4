@@ -1,0 +1,39 @@
+(ExpressProject "8255_and_keypad"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\8255_and_keypad.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x"))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector
+    (8255
+      (FullPartName "8255.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MISC.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory
+     "C:\OrCAD\OrCAD_16.6_Lite\tools\capture\library")
+  (GlobalState
+    (FileView
+      (Path "Design Resources"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -30 0 200 0 522"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -30 100 1401 100 660")
+        (Scroll "-112 0")
+        (Zoom "106")
+        (Occurrence "/"))
+      (Path
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\8255_AND_KEYPAD.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1"))))
