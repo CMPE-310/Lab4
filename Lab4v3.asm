@@ -1,3 +1,14 @@
+; Names: Jonathan Peevy, Natalie Morningstar, Bruce Oshokoya
+; Date: December 10, 2013
+; Course: CMPE-310
+; Assignment: Lab 4
+; Version: 3
+;
+; This version of the lab 4 program builds on the functionality of the v2 program, which was able to display a message to LCD, and
+; included programming of 8279 interface and 8259A interrupt controller.
+; Version 3 adds the functionality of interrupts from key presses.
+
+
 ; Force 16-bit code and 8086 instruction set
 ; ------------------------------------------
 	
@@ -29,11 +40,39 @@ section PROGRAM USE16 ALIGN=16 CLASS=CODE
 	
 ..start
  	
-	;cli				; Turn off interrupts
+	cli				; Turn off interrupts
 	
+	; Program 8279 - Keyboard/Display Interface
+	mov al, 00111001b		; Clock command byte. 001 prefix, 11001 to divide CLK by 2.
+	out KBD_CMD, al
+	mov al, 00001001b		; Program Mode command byte. 000 prefix, 01 - 16 key system, 001 - decoded
+	out KBD_CMD, al
+	
+	; Program 8259A - Interrupt Controller
+	mov al, 00010011b		; ICW-1. 0001 prefix, 0 - edge triggered, 0 - don't care, 1 - single, - ICW-4 not needed.
+	out INT_A0, al
+	mov al, 00001000b		; ICW-2.
+	out INT_A1, al
+	mov al, 00000001b		; ICW-4. 000 prefix, 0 - non-nested, 00 - no buffer (no slave units), 0 - normal EOI, 1 - 8086 mode.
+	out INT_A1, al
+	mov al, 11111101b		; OCW-1. Set on all lines, except line IR1.
+	
+	; Setup up interrupt vector table
+   	; -------------------------------
+	;;; EXAMPLE, take this code out when not using interrupts. This loads two interrupt vectors at vectors 0x09 and 0x0A 
+	
+	mov bx, 0
+	mov es, bx
+    mov bx, 8H * 4		;Interrupt vector table 0x08 base address
+    mov cx, INTR1		;INTR1 service routine
+    mov [es:bx+4], cx		;offset
+    mov [es:bx+6], cs		;current code segment
 	
 	;; When using interrupts use the following instruction (jmp $) to sit in a busy loop, turn on interrupts before that
-	;; jmp $
+	jmp $
+	
+INTR1:
+	iret
 	
 KEYPAD_INIT:
 	mov ax, 0
@@ -128,9 +167,9 @@ jmp KEYPAD_CHANGE_1
 section CONSTSEG USE16 ALIGN=16 CLASS=CONST
 
 	welcome: 	db " Welcome to CMPE 310" 	; 20 characters per line
-				db "     Fall 13        " 
-				db "   Trainer Board    "
-				db "    8086 Project    " 	
+				db "     Fall '13       " 
+				db "     Final Lab      "
+				db " Mortgage Calculator" 	
 	len1: 		equ $ - welcome
 
 	change_project1: db " Project"				;8 characters, displayed starting at character 12 (offset+1)
