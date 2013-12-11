@@ -40,10 +40,17 @@ section PROGRAM USE16 ALIGN=16 CLASS=CODE
  	
 	;cli				; Turn off interrupts
 	
-	mov al, 00001001b		; Program 8279 Keyboard/Display command byte. 000 prefix, 01 - 16 key system, 001 - decoded
+	; Program 8279 - Keyboard/Display Interface
+	mov al, 00111001b		; Clock command byte. 001 prefix, 11001 to divide CLK by 2.
 	out KBD_CMD, al
-	mov al, 00111001b		; Program 8279 Program CLK. 001 prefix, 11001 to divide clk by 25.
+	mov al, 00001001b		; Program Mode command byte. 000 prefix, 01 - 16 key system, 001 - decoded
 	out KBD_CMD, al
+	
+	; Program 8259A - Interrupt Controller
+	mov al, 00010010b		; ICW-1. 0001 prefix, 0 - edge triggered, 0 - don't care, 1 - single, - ICW-4 not needed.
+	out INT_A0, al
+	mov al, 00001000b		; ICW-2.
+	out INT_A1, al
 	
 	;; When using interrupts use the following instruction (jmp $) to sit in a busy loop, turn on interrupts before that
 	;; jmp $
@@ -141,9 +148,9 @@ jmp KEYPAD_CHANGE_1
 section CONSTSEG USE16 ALIGN=16 CLASS=CONST
 
 	welcome: 	db " Welcome to CMPE 310" 	; 20 characters per line
-				db "     Fall 13        " 
-				db "   Trainer Board    "
-				db "    8086 Project    " 	
+				db "     Fall '13       " 
+				db "     Final Lab      "
+				db " Mortgage Calculator" 	
 	len1: 		equ $ - welcome
 
 	change_project1: db " Project"				;8 characters, displayed starting at character 12 (offset+1)
