@@ -47,9 +47,11 @@ section PROGRAM USE16 ALIGN=16 CLASS=CODE
 	out KBD_CMD, al
 	
 	; Program 8259A - Interrupt Controller
-	mov al, 00010010b		; ICW-1. 0001 prefix, 0 - edge triggered, 0 - don't care, 1 - single, - ICW-4 not needed.
+	mov al, 00010011b		; ICW-1. 0001 prefix, 0 - edge triggered, 0 - don't care, 1 - single, - ICW-4 not needed.
 	out INT_A0, al
 	mov al, 00001000b		; ICW-2.
+	out INT_A1, al
+	mov al, 00000001b		; ICW-4. 000 prefix, 0 - non-nested, 00 - no buffer (no slave units), 0 - normal EOI, 1 - 8086 mode.
 	out INT_A1, al
 	
 	;; When using interrupts use the following instruction (jmp $) to sit in a busy loop, turn on interrupts before that
