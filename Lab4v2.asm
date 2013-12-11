@@ -53,6 +53,7 @@ section PROGRAM USE16 ALIGN=16 CLASS=CODE
 	out INT_A1, al
 	mov al, 00000001b		; ICW-4. 000 prefix, 0 - non-nested, 00 - no buffer (no slave units), 0 - normal EOI, 1 - 8086 mode.
 	out INT_A1, al
+	mov al, 11111101b		; OCW-1. Set on all lines, except line IR1.
 	
 	;; When using interrupts use the following instruction (jmp $) to sit in a busy loop, turn on interrupts before that
 	;; jmp $
