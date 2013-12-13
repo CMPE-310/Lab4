@@ -1,21 +1,24 @@
-(ExpressProject "8279_and_Keypad"
+(ExpressProject "8259"
   (ProjectVersion "19981106")
   (ProjectType "PCB")
   (Folder "Design Resources"
-    (Folder "Library"
-      (File
-         "C:\Users\Natalie Morningstar\Documents\CMPE_310_Cadence_Files\LIBRARY1.OLB"
-        (Type "Schematic Library")))
+    (Folder "Library")
     (NoModify)
-    (File ".\8279_and_keypad.dsn"
+    (File ".\8259.dsn"
       (Type "Schematic Design"))
     (BuildFileAddedOrDeleted "x")
     (CompileFileAddedOrDeleted "x"))
   (Folder "Outputs")
   (Folder "Referenced Projects")
   (PartMRUSelector
-    (7422
-      (FullPartName "7422.Normal")
+    (GND
+      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (VCC
+      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (74LS04
+      (FullPartName "74LS04.Normal")
       (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\GATE.OLB")
       (DeviceIndex "0"))
     (16L8
@@ -27,21 +30,28 @@
       (LibraryName
          "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
-    (VCC
-      (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
-      (DeviceIndex "0"))
-    ("SW PUSHBUTTON-SPST"
-      (FullPartName "SW PUSHBUTTON-SPST.Normal")
+    (DIODE
+      (FullPartName "DIODE.Normal")
       (LibraryName
          "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
-    (SW_TC_SPST
-      (FullPartName "SW_TC_SPST.Normal")
+    ("CAPACITOR NON-POL"
+      (FullPartName "CAPACITOR NON-POL.Normal")
       (LibraryName
          "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
-    (8279
-      (FullPartName "8279.Normal")
+    ("SW SPST/SM"
+      (FullPartName "SW SPST/SM.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    ("SW SPST"
+      (FullPartName "SW SPST.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (8259A
+      (FullPartName "8259A.Normal")
       (LibraryName "C:\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MISC.OLB")
       (DeviceIndex "0")))
   (LastUsedLibraryBrowseDirectory
@@ -49,16 +59,10 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources" ".\8279_and_keypad.dsn")
-      (Path "Design Resources" ".\8279_and_keypad.dsn" "SCHEMATIC1")
-      (Path "Design Resources" "Library")
-      (Path "Design Resources" "Library"
-         "C:\Users\Natalie Morningstar\Documents\CMPE_310_Cadence_Files\LIBRARY1.OLB")
-      (Select "Design Resources" ".\8279_and_keypad.dsn" "SCHEMATIC1" "PAGE1"))
+      (Select "Design Resources"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 2 3 -1 -1 -8 -30 0 200 0 487"))
-      (Tab 0)))
-  (MPSSessionName "Natalie Morningstar"))
+        (Placement "44 2 3 -1 -1 -8 -30 0 200 0 522"))
+      (Tab 0))))
