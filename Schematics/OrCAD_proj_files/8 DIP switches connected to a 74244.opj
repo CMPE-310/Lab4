@@ -1,0 +1,8 @@
+(ExpressProject "8 DIP switches connected to a 74244"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify))
+  (Folder "Outputs")
+  (Folder "Referenced Projects"))
