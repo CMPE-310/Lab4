@@ -1,0 +1,34 @@
+(ExpressProject "LCD"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\lcd.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x"))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Select "Design Resources"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -38 0 210 0 375"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -4 -38 76 1726 76 507")
+        (Scroll "-243 0")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path "C:\ORCAD_WORKSPACE\LCD.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1")))
+  (MPSSessionName "Bruce"))
