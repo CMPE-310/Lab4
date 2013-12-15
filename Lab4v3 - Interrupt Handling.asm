@@ -72,6 +72,12 @@ section PROGRAM USE16 ALIGN=16 CLASS=CODE
 	jmp $
 	
 INTR1:
+	mov DX, 0xFFF0
+	in AL, DX
+	;; Translate raw key press byte contained in AL to ASCII character 
+	and AL, 00011111b ; Remove first three bits
+	mov BX, key_table ; Move key table address location to BX
+	XLATB ; Translate
 	iret
 	
 KEYPAD_INIT:
@@ -160,7 +166,7 @@ jmp KEYPAD_CHANGE_1
 
 ; --------------------------------------------------------------------------------------------------------------------------
 ; 													      			
-; RAM data section, align at 16 byte boundry, 16-bit
+; RAM data section, align at 16 byte boundary, 16-bit
 ; --------------------------------------------------------------------------------------------------------------------------	
 ;;; THIS IS YOUR DATA SEGMENT
 
@@ -174,3 +180,6 @@ section CONSTSEG USE16 ALIGN=16 CLASS=CONST
 
 	change_project1: db " Project"				;8 characters, displayed starting at character 12 (offset+1)
 	change_project2: db " is fun "				;8 characters, displayed starting at character 12 (offset+1)
+
+	state:		db 0
+	key_table:	db "01231XXX45672XXX89AB3XXXCDEF4" ; look up table
