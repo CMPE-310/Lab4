@@ -1,0 +1,41 @@
+(ExpressProject "8086_Ours"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\8086_ours.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x"))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\ORCAD_PROJ_FILES\8086_ours.dsn")
+      (Path "Design Resources"
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\ORCAD_PROJ_FILES\8086_ours.dsn"
+         "SCHEMATIC1")
+      (Select "Design Resources"
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\ORCAD_PROJ_FILES\8086_ours.dsn"
+         "SCHEMATIC1" "PAGE1"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -30 0 200 0 418"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -30 50 1665 50 506")
+        (Scroll "-269 0")
+        (Zoom "106")
+        (Occurrence "/"))
+      (Path
+         "C:\USERS\NATALIE MORNINGSTAR\DOCUMENTS\GITHUB\LAB4\SCHEMATICS\ORCAD_PROJ_FILES\8086_OURS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1"))))
